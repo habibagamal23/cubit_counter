@@ -8,18 +8,19 @@ class ShowScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counterCubit = context.read<CounterCubit>();
+
 
     return Scaffold(
-        appBar: AppBar(title: const Text("Cubit Counter Example")),
+        appBar: AppBar(title: const Text("Cubit Show Example")),
         body: Center(
           child: BlocBuilder<CounterCubit, CounterState>(
             builder: (context, state) {
+
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    ' ${counterCubit.counter}',
+                    ' ${ context.read<CounterCubit>().counter}',
                     style: const TextStyle(fontSize: 48),
                   ),
                 ],

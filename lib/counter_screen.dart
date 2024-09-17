@@ -7,7 +7,7 @@ import 'cubit/counter_cubit.dart';
 class CounterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
+var con = context.read<CounterCubit>();
 
     return Scaffold(
       appBar: AppBar(title: const Text("Cubit Counter Example")),
@@ -18,30 +18,25 @@ class CounterScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Counter Value: ${ context.read<CounterCubit>().counter}',
+                  'Counter Value: ${ con.counter}',
                   style: const TextStyle(fontSize: 48),
+                ),
+                TextButton(
+
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ShowScreen()));
+                  },
+                  child: Text("go" ,style: TextStyle(fontSize: 50),),
                 ),
               ],
             );
           },
         ),
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () =>  context.read<CounterCubit>().increment(),
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ShowScreen()));
-            },
-            child: const Icon(Icons.arrow_forward),
-          ),
-        ],
+      floatingActionButton:  FloatingActionButton(
+        onPressed: () =>  context.read<CounterCubit>().increment(),
+        child: const Icon(Icons.add),
       ),
     );
   }
