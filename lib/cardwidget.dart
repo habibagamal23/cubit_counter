@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:state_mang/counter_cubit.dart';
 
 class CounterCard extends StatelessWidget {
   final String title;
@@ -20,13 +21,17 @@ class CounterCard extends StatelessWidget {
               style: const TextStyle(fontSize: 24),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Counter Value: ',
-              style: const TextStyle(fontSize: 32),
-            ),
+            BlocBuilder<CounterCubit, CounterState>(builder: (context, state) {
+              return Text(
+                'Counter Value:${context.read<CounterCubit>().counter} ',
+                style: const TextStyle(fontSize: 32),
+              );
+            }),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<CounterCubit>().incr();
+              },
               child: const Text('Increment'),
             ),
           ],
