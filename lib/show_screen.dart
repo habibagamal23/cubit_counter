@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'cubit/counter_cubit.dart';
 
 class ShowScreen extends StatelessWidget {
   const ShowScreen({super.key});
@@ -11,10 +14,12 @@ class ShowScreen extends StatelessWidget {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              '1',
-              style: const TextStyle(fontSize: 48),
-            ),
+            BlocBuilder<CounterCubit, CounterState>(builder: (context, state) {
+              return Text(
+                '${BlocProvider.of<CounterCubit>(context).conter}',
+                style: const TextStyle(fontSize: 48),
+              );
+            })
           ],
         )));
   }

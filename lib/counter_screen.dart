@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:state_mang/cubit/counter_cubit.dart';
 import 'package:state_mang/show_screen.dart';
 
 class CounterScreen extends StatelessWidget {
@@ -10,10 +12,12 @@ class CounterScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Counter Value: 1',
-              style: const TextStyle(fontSize: 48),
-            ),
+            BlocBuilder<CounterCubit, CounterState>(builder: (context, state) {
+              return Text(
+                'Counter Value: ${BlocProvider.of<CounterCubit>(context).conter}',
+                style: const TextStyle(fontSize: 48),
+              );
+            }),
             const SizedBox(height: 20), // Add space between elements
             ElevatedButton(
               onPressed: () {
@@ -27,7 +31,10 @@ class CounterScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          BlocProvider.of<CounterCubit>(context).icremnet();
+
+        },
         child: const Icon(Icons.add),
       ),
     );
