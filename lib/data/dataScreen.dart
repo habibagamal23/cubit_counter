@@ -1,8 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'data_cubit.dart';
-
 
 class Datascreen extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
@@ -23,13 +20,7 @@ class Datascreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                final username = _usernameController.text;
-                if (username.isNotEmpty) {
-                  context.read<DataCubit>().setUsername(username);
-                  Navigator.pushNamed(context, '/profile');
-                }
-              },
+              onPressed: () {},
               child: Text("Submit"),
             ),
           ],
