@@ -20,7 +20,9 @@ class CounterScreen extends StatelessWidget {
               BlocBuilder<CounterCubit, CounterState>(
                 builder: (context, state) {
                   return Text(
-                    'Counter Value: ${context.read<CounterCubit>().counter}',
+                    'Counter Value: ${context
+                        .read<CounterCubit>()
+                        .counter}',
                     style: const TextStyle(fontSize: 32),
                   );
                 },
