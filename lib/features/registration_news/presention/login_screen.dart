@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:state_mang/test/home_screen.dart';
+
+import '../logic/registrion_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
@@ -23,9 +27,14 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                context
+                    .read<RegistrionCubit>()
+                    .login(usernameController.text, passwordController.text);
+              },
               child: Text('Login'),
             ),
+            SizedBox(height: 20),
             TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/register');

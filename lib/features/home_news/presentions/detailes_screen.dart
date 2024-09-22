@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
-  DetailsScreen();
+
+  String title;
+  String desc;
+  DetailsScreen(this.title ,this.desc);
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +16,12 @@ class DetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "",
+            title,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
             Text(
-              "",
+              desc,
               style: TextStyle(fontSize: 18),
             ),
           ],
