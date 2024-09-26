@@ -32,11 +32,7 @@ class MyApp extends StatelessWidget {
             return RegisterScreen();
           } else if (state is Logout) {
             return LoginScreen();
-          } else if (state is Registfaliuer) {
-            return LoginScreen();
-            /// need to handel
           }
-
           return Container();
         }));
   }

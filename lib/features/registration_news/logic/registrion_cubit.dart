@@ -6,12 +6,13 @@ part 'registrion_state.dart';
 
 class RegistrionCubit extends Cubit<RegistrionState> {
   RegistrionCubit() : super(RegistrionInitial());
-
   Future<void> login(String email, String pass) async {
-    if (email == "habibaGamal" && pass == "1234") {
+    if (email == "habiba" && pass == "1234") {
       final pres = await SharedPreferences.getInstance();
       await pres.setBool("islogin", true);
       emit(Signin());
+    } else {
+      emit(Registfaliuer('Invalid username or password')); // Emit failure with message
     }
   }
 
